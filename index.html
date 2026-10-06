@@ -68,6 +68,14 @@ input.codein{width:min(86vw,320px);padding:12px;font-size:30px;text-align:center
 #err{color:#ff8a70;font-size:14px;min-height:1.3em}
 #rotate{position:fixed;left:0;right:0;top:0;padding:6px;background:#c2331f;text-align:center;font-size:13px;z-index:9}
 </style>
+<style>html,body,button,canvas{touch-action:manipulation}</style>
+<script>
+(function(){var last=0,ok=function(t){return !/^(INPUT|TEXTAREA)$/.test(t.tagName);};
+document.addEventListener('touchend',function(e){var n=Date.now();if(n-last<350&&ok(e.target))e.preventDefault();last=n;},{passive:false});
+['gesturestart','gesturechange','gestureend'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault();});});
+document.addEventListener('dblclick',function(e){if(ok(e.target))e.preventDefault();});
+document.addEventListener('touchmove',function(e){if(e.touches.length>1)e.preventDefault();},{passive:false});})();
+</script>
 </head>
 <body>
 <canvas id="c"></canvas>
